@@ -103,10 +103,30 @@ for (XX in 1:nrow(OMdf)) {
 
     }
 
+    # copy Excel
+    fls <- list.files(src.path, pattern='.xlsx')
+    if (length(fls) >1) fls <- fls[1]
+    if (length(fls) <1) {
+      OMxl <- ''
+    } else {
+      OMxl <- fls
+    }
+    if (nchar(OMxl) >0) {
+      tt <- file.copy(file.path(src.path,OMxl), file.path(out.path, OMxl))
+    }
+
     # copy html
-    if (file.exists(file.path(src.path, "OM.html")))
-      file.copy(file.path(src.path, "OM.html"), file.path(out.path, "OM.html"),
-                overwrite = TRUE)
+    fls <- list.files(src.path, pattern='.html')
+    if (length(fls) >1) fls <- fls[fls == paste0(OMname, ".html")]
+
+    if (length(fls) <1) {
+      OMrep <- ''
+    } else {
+      OMrep <- fls
+    }
+    if (nchar(OMrep) >0) {
+      tt <- file.copy(file.path(src.path, OMrep), file.path(out.path, OMrep))
+    }
 
 }
 

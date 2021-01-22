@@ -81,6 +81,10 @@ NULL
 
 
 #' @rdname MSEextra-OM
+"Skipjack_IO_IOTC"
+
+
+#' @rdname MSEextra-OM
 "Snowy_Grouper_GOM_NOAA"
 
 
