@@ -7,7 +7,7 @@ setwd("C:/Users/Adrian/Documents/GitHub/MSEextra")
 pkg.dir <- getwd()
 if (!grepl('MSEextra', pkg.dir))
   stop('Current directory must be MSEextra project')
-OM.path <- 'G:/Shared drives/BM shared/2. Resources/3_OM_case_studies'
+OM.path <- 'G:/Shared drives/BM shared/4. Resources/3_OM_case_studies'
 
 OM.dirs <- list.dirs(OM.path, recursive = FALSE)
 OM.dirs <- OM.dirs[!grepl('Z - INCOMPLETE', OM.dirs)]
