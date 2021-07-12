@@ -17,8 +17,11 @@ OMdf <- data.frame(OMs=OMs, path=OM.dirs, build=TRUE, success=TRUE, error=NA)
 
 # set build=FALSE to skip re-building (e.g. importing from SS)
 
+
+runs <- which(grepl('CDFW', OMdf$OMs))
 # ---- Build the OMs and Documentation for each OM in OMdf (where build=TRUE) ----
-for (XX in 1:nrow(OMdf)) {
+# for (XX in 1:nrow(OMdf)) {
+for (XX in runs) {
   OMname <- as.character(OMdf$OMs[XX])
   message(OMname)
   fp <- OMdf$path[XX]
@@ -38,6 +41,7 @@ for (XX in 1:nrow(OMdf)) {
 
 if (any(!OMdf$success))
   stop('Some OMs did not build successfully!')
+
 
 
 # ---- Copy over files to MSEextra ----
@@ -118,6 +122,18 @@ for (XX in 1:nrow(OMdf)) {
     # copy html
     fls <- list.files(src.path, pattern='.html')
     if (length(fls) >1) fls <- fls[fls == paste0(OMname, ".html")]
+
+    if (length(fls) <1) {
+      OMrep <- ''
+    } else {
+      OMrep <- fls
+    }
+    if (nchar(OMrep) >0) {
+      tt <- file.copy(file.path(src.path, OMrep), file.path(out.path, OMrep))
+    }
+
+    # copy pdf
+    fls <- list.files(src.path, pattern='.pdf')
 
     if (length(fls) <1) {
       OMrep <- ''

@@ -53,6 +53,10 @@ NULL
 
 
 #' @rdname MSEextra-OM
+"Kelp_Bass_CA_CDFW"
+
+
+#' @rdname MSEextra-OM
 "Lane_Snapper_GOM_NOAA"
 
 
@@ -77,6 +81,14 @@ NULL
 
 
 #' @rdname MSEextra-OM
+"Redtail_Surf_Perch_CA_CDFW"
+
+
+#' @rdname MSEextra-OM
+"Rock_Crab_CA_CDFW"
+
+
+#' @rdname MSEextra-OM
 "Shortspine_Thornyhead_BC_DFO"
 
 
@@ -90,6 +102,10 @@ NULL
 
 #' @rdname MSEextra-OM
 "Speckled_Hind_GOM_NOAA"
+
+
+#' @rdname MSEextra-OM
+"Spiny_Lobster_CA_CDFW"
 
 
 #' @rdname MSEextra-OM
