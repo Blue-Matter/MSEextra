@@ -81,13 +81,11 @@ for (i in seq_along(alldirs)) {
   pdfs <- list.files(source.dir, pattern = '.pdf')
   if (hasOMrep) {
     OM.pdf <- pdfs[grepl(CSname, pdfs)]
-    if (length(CSname)>0) {
+    if (length(OM.pdf)>0) {
       OMrep <- OM.pdf
     } else {
       OMrep <- paste0(CSname, '.html')
     }
-
-
   } else {
     OMrep <- ''
   }
@@ -95,11 +93,12 @@ for (i in seq_along(alldirs)) {
 
   Data.pdf <- pdfs[grepl('Data-Report', pdfs)]
 
-
+  hasDatarep <- FALSE
   if (length(Data.pdf)>0) {
     Datarep <- Data.pdf
+    hasDatarep <- TRUE
   } else {
-    MSErep <- ''
+    Datarep <- ''
   }
 
   if (hasOMxl) {
@@ -108,13 +107,23 @@ for (i in seq_along(alldirs)) {
     OMxl <- ''
   }
 
+  OM.path <- file.path(paste0('https://htmlpreview.github.io/?', base.url2), OMrep)
+  if (grepl('pdf', OMrep)) {
+    OM.path <- file.path(paste0('https://docs.google.com/viewer?url=', base.url), OMrep)
+  }
+
+  Data.path <- file.path(paste0('https://htmlpreview.github.io/?', base.url2), Datarep)
+  if (grepl('pdf', Datarep)) {
+    Data.path <- file.path(paste0('https://docs.google.com/viewer?url=', base.url), Datarep)
+  }
+
   df <- data.frame(Species, Region, Agency, Sponsor,
-                   OM.Report=file.path(paste0('https://htmlpreview.github.io/?', base.url2), OMrep),
+                   OM.Report=OM.path,
                    OM.XL=file.path(base.url, OMxl),
-                   Data.Report=file.path(paste0('https://htmlpreview.github.io/?',base.url2), Datarep),
+                   Data.Report=Data.path,
                    hasOMrep=hasOMrep,
                    hasOMxl=hasOMxl,
-                   hasMSErep=hasMSErep,
+                   hasDatarep=hasDatarep,
                    OMpathout=file.path(base.url, 'OM.rdata'),
                    Class=class, Family=family,
                    Name=OM@Common_Name)
