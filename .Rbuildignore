@@ -1,0 +1,6 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+
+^build_package
+
+^OM_case_studies

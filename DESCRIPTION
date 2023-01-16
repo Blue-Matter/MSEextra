@@ -1,0 +1,14 @@
+Package: MSEextra
+Type: Package
+Title: Additional OMs, Data, and Assessment functions for openMSE packages
+Version: 0.2.0
+Author: A. Hordyk, Q. Huynh, and T. Carruthers
+Maintainer: Adrian Hordyk <adrian@bluematterscience.com>
+Description: Additional OMs, data sets, objects, and TMB functions for openMSE packages
+License: GPL-3
+Encoding: UTF-8
+LazyData: TRUE
+Depends: 
+    R (>= 3.5.0),
+    MSEtool (>= 3.0.0)
+RoxygenNote: 7.2.0
