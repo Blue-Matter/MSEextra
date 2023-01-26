@@ -8,6 +8,7 @@
 spict(
   x = 1,
   Data,
+  inp_args = list(),
   start = NULL,
   fix_dep = TRUE,
   fix_n = TRUE,
@@ -25,27 +26,29 @@ Otherwise, equals to 1 when running an assessment interactively.}
 
 \item{Data}{An object of class Data.}
 
-\item{start}{Optional list of starting values. See details.}
+\item{inp_args}{A named of list of additional variables for the \code{inp} list to pass to \link[spict]{check.inp}. Core function for configuring spict.}
+
+\item{start}{Optional list of starting values. See details. Overrides \code{inp_args}.}
 
 \item{fix_dep}{Logical, whether to fix the initial depletion (ratio of biomass to carrying capacity in the
 first year of the model). If \code{TRUE}, uses the value in \code{start}, otherwise equal to 1
-(assumes unfished conditions).}
+(assumes unfished conditions). Overrides \code{inp_args}.}
 
 \item{fix_n}{Logical, whether to fix the exponent of the production function. If \code{TRUE},
 uses the value in \code{start}, otherwise equal to \code{n = 2}, where the biomass at MSY
-is half of carrying capacity.}
+is half of carrying capacity. Overrides \code{inp_args}.}
 
 \item{fix_sigma}{Logical, whether the standard deviation of the index is fixed. If \code{TRUE},
-sigma is fixed to value provided in \code{start} (if provided), otherwise, value based on \code{Data@CV_Ind}.}
+sigma is fixed to value provided in \code{start} (if provided), otherwise, value based on \code{Data@CV_Ind}. Overrides \code{inp_args}.}
 
 \item{fix_omega}{Logical, whether the standard deviation of the catch is fixed. If \code{TRUE},
-omega is fixed to value provided in \code{start} (if provided), otherwise, value based on \code{Data@CV_Cat}.}
+omega is fixed to value provided in \code{start} (if provided), otherwise, value based on \code{Data@CV_Cat}. Overrides \code{inp_args}.}
 
 \item{fix_alpha}{Logical, whether the ratio of index and biomass standard deviations is fixed. If \code{TRUE},
-alpha is fixed to value provided in \code{start} (if provided), otherwise, equal to 1.}
+alpha is fixed to value provided in \code{start} (if provided), otherwise, equal to 1. Overrides \code{inp_args}.}
 
 \item{fix_beta}{Logical, whether the ratio of catch and F standard deviations is fixed. If \code{TRUE},
-tau is fixed to value provided in \code{start} (if provided), otherwise, equal to 1.}
+tau is fixed to value provided in \code{start} (if provided), otherwise, equal to 1. Overrides \code{inp_args}.}
 
 \item{n_seas}{Integer, the number of sub-annual time steps in the model, i.e. the inverse of the Euler time step. Defaults to 4 (seasonal time steps).}
 
@@ -67,7 +70,7 @@ To provide starting values, a named list can be provided for \code{MSY}, \code{K
 }
 \note{
 This is a wrapper function intended for a DLMtool \linkS4class{Data} object. The \code{spict} package can be
-downloaded from Github with \code{devtools::install_github("mawp/spict/spict")}.
+downloaded from Github with \code{devtools::install_github("DTUAqua/spict/spict")}.
 
 The full spict model also accommodates time-varying reference points and seasonal data among other
 things, but these features are currently not used here. Additional diagnostics and plotting functions are also available in the spict package.
@@ -81,7 +84,9 @@ things, but these features are currently not used here. Additional diagnostics a
 
 \section{Optional Data}{
 
-\code{spict}: CV_Cat, CV_Ind
+\itemize{
+\item \code{spict}: CV_Cat, CV_Ind
+}
 }
 
 \examples{
@@ -93,7 +98,7 @@ res <- spict(Data = swordfish)
 plot(res)
 summary(res)
 
-## Use additional functions spict functions
+## Use additional spict-package functions
 spict_output <- res@info
 library(spict)
 summary(spict_output)
