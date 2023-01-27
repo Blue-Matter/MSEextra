@@ -193,11 +193,13 @@ spict <- SPiCT <- function(x = 1, Data, inp_args = list(), start = NULL, fix_dep
     Assessment@SE_FMSY <- SD$sd[names(SD$value) == "Fmsy"]
     Assessment@SE_MSY <- SD$sd[names(SD$value) == "MSY"]
 
-    #delta_log <- function(mu, std) exp(mu) * std
-    #Assessment@SE_F_FMSY <- delta_log(SD$value[names(SD$value) == "logFFmsy"][ny*n_seas-n_seas+1],
-    #                                  SD$sd[names(SD$value) == "logFFmsy"][ny*n_seas-n_seas+1])
-    #Assessment@SE_B_BMSY <- Assessment@SE_VB_VBMSY <-
-    #  delta_log(SD$value[names(SD$value) == "logBBmsy"][ny*n_seas+1], SD$sd[names(SD$value) == "logBBmsy"][ny*n_seas+1])
+    delta_log <- function(mu, std) exp(mu) * std
+    SE_log_F_FMSY <- spict::get.par("logFFmsy", res)[, "sd"]
+    SE_log_B_BMSY <- spict::get.par("logBBmsy", res)[, "sd"]
+    Assessment@SE_F_FMSY <- delta_log(log(Assessment@F_FMSY[length(Assessment@F_FMSY)]),
+                                      SE_log_F_FMSY[names(SE_log_F_FMSY) == max(Year)])
+    Assessment@SE_B_BMSY <- delta_log(log(Assessment@B_BMSY[length(Assessment@B_BMSY)]),
+                                      SE_log_B_BMSY[names(SE_log_B_BMSY) == max(Year) + 1])
   }
   if(is.null(res$sderr)) {
     Assessment@SD <- SD
