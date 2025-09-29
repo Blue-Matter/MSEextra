@@ -34,7 +34,7 @@
 #' @return An object of \code{\linkS4class{Assessment}} containing assessment output.
 #' @note
 #' This is a wrapper function intended for a `MSEtool` \linkS4class{Data} object. The \code{spict} package can be
-#' downloaded from Github with \code{devtools::install_github("mawp/spict/spict")}.
+#' downloaded from Github with \code{devtools::install_github("DTUAqua/spict/spict")}.
 #'
 #' The full spict model also accommodates time-varying reference points and seasonal data among other
 #' things, but these features are currently not used here. Additional diagnostics and plotting functions are also available in the spict package.
