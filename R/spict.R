@@ -7,7 +7,7 @@
 #' and process standard deviations). These can be changed in the function arguments below.
 #'
 #' @aliases SPiCT
-#' @param x An index for the objects in \code{Data} when running in \link[DLMtool]{runMSE}.
+#' @param x An index for the objects in \code{Data} when running in \link[MSEtool]{runMSE}.
 #' Otherwise, equals to 1 when running an assessment interactively.
 #' @param Data An object of class Data.
 #' @param inp_args A named of list of additional variables for the \code{inp} list to pass to \link[spict]{check.inp}. Core function for configuring spict.
@@ -33,7 +33,7 @@
 #' \code{sigma} via the \code{start} argument. Otherwise, the defaults from the spict package are used.
 #' @return An object of \code{\linkS4class{Assessment}} containing assessment output.
 #' @note
-#' This is a wrapper function intended for a DLMtool \linkS4class{Data} object. The \code{spict} package can be
+#' This is a wrapper function intended for a `MSEtool` \linkS4class{Data} object. The \code{spict} package can be
 #' downloaded from Github with \code{devtools::install_github("DTUAqua/spict/spict")}.
 #'
 #' The full spict model also accommodates time-varying reference points and seasonal data among other

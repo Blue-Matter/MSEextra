@@ -21,7 +21,7 @@ spict(
 )
 }
 \arguments{
-\item{x}{An index for the objects in \code{Data} when running in \link[DLMtool]{runMSE}.
+\item{x}{An index for the objects in \code{Data} when running in \link[MSEtool]{runMSE}.
 Otherwise, equals to 1 when running an assessment interactively.}
 
 \item{Data}{An object of class Data.}
@@ -69,7 +69,7 @@ To provide starting values, a named list can be provided for \code{MSY}, \code{K
 \code{sigma} via the \code{start} argument. Otherwise, the defaults from the spict package are used.
 }
 \note{
-This is a wrapper function intended for a DLMtool \linkS4class{Data} object. The \code{spict} package can be
+This is a wrapper function intended for a `MSEtool` \linkS4class{Data} object. The \code{spict} package can be
 downloaded from Github with \code{devtools::install_github("DTUAqua/spict/spict")}.
 
 The full spict model also accommodates time-varying reference points and seasonal data among other
