@@ -66,6 +66,10 @@
 #' plot(spict_output)
 #' spict_retro <- retro(spict_output)
 #' plotspict.retro(spict_retro)
+#'
+#' ## Example on how to pass r prior to assessment function
+#' res_prior <- MSEextra::spict(Data = swordfish, inp_args = list(priors = list(logr = c(log(0.8), 0.01, 1))))
+#' plot(res_prior@@info) # Confirm r prior in spict package output
 #' }
 #' @import SAMtool
 #' @importClassesFrom SAMtool Assessment
